@@ -1,13 +1,13 @@
 <p align="center">
   <img src="docs/logo.png" width="128" alt="Wisp Logo"/>
 </p>
-<p align="center"><strong>Wisp (原AChat)</strong><br/>一个 AI 聊天应用</p>
+<p align="center"><strong>Wisp</strong><br/>一个 AI 聊天应用</p>
 
 > 代码由 AI 生成，功能设计参考了类似项目。
 
 > 代码可读性一般，欢迎指指点点。
 
-一个 Android 端的 AI 聊天应用。支持情绪感知、好感度系统、RAG 记忆、主动关怀等功能。
+一个 Android 端的 AI 聊天应用。支持情绪感知、好感度系统、RAG 记忆、主动关怀、语音对话等功能。
 
 ## 截图
 
@@ -19,29 +19,15 @@
 
 ## 功能
 
-- **情绪感知** — 本地 7 类情绪模型检测用户对话情绪
 - **好感度系统** — 7 级关系，好感度影响 AI 回复
-- **主动关怀** — AI 闲时主动问候，支持多种触发条件
-- **情绪可视化** — 用户消息旁显示情绪表情
-- **时间感知** — 联网校准
-- **导入 Skill** — 支持 ex-skill 格式导入角色人设，未来支持酒馆角色卡
-- **语音输入 (STT)** — 6 引擎可选 + 自动降级链，详见下方 [STT](#语音输入-stt)
-- **语音朗读 (TTS)** — 本地 / 云端 / PC GPT-SoVITS 三引擎降级链
+- **主动关怀** — AI 可主动问候，支持多种触发条件
+- **导入 Skill** — 支持 ex-skill 格式导入角色人设，支持酒馆角色卡
+- **语音输入 (STT)** — 6 引擎可选
+- **语音朗读 (TTS)** — 本地 / 云端 / PC GPT-SoVITS
 
 ## 语音输入 (STT)
 
-设置 → 调试 → 语音转文字 (STT) 中选择引擎，主引擎失败时按降级链自动兜底：
-
-| 引擎 | 适用场景 | 准确率 | 资源占用 |
-|---|---|---|---|
-| 本地 SenseVoice | 离线、中文为主 | 高（推荐） | 模型 239MB（int8） |
-| 本地 Whisper | 离线、多语种 | 中（中文弱） | 模型 103MB（三件套） |
-| 讯飞 RTASR | 在线、中文顶尖 | 极高 | 需 APPID + APIKey |
-| 云端 Whisper | 在线、OpenAI 兼容 | 高 | 需 API Key |
-| PC Whisper | 局域网 PC 转写 | 高 | 需 PC 服务 |
-| 系统 STT | 兜底 | 取决于 ROM | 无 |
-
-降级链示例：`local_sensevoice → xfyun → cloud → system`
+集成 SenseVoice、Whisper 模型以处理语音，也可以通过 Wisp Companion 连接电脑来处理语音
 
 ### 本地 SenseVoice / Whisper 模型来源
 
@@ -58,8 +44,6 @@
 curl -L -o app/libs/sherpa-onnx-1.12.40.aar \
   https://github.com/k2-fsa/sherpa-onnx/releases/download/v1.12.40/sherpa-onnx-1.12.40.aar
 ```
-
-AAR 体积 54MB，已通过 `.gitignore` 排除，不会进入版本库。
 
 ## 注意
 
