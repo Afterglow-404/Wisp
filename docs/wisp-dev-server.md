@@ -4,7 +4,7 @@
 
 ## 启动
 
-在 `WeChatClone` 目录中打开 PowerShell：
+在 `Wisp` 目录中打开 PowerShell：
 
 ```powershell
 node scripts/wisp-dev-server.mjs
@@ -195,9 +195,9 @@ $env:QWEN3_TTS_MAX_NEW_TOKENS = '512'
 python scripts\qwen3_tts_server.py
 ```
 
-本机 RTX 2070 实测使用 0.6B 模型、CUDA、`float32`、采样开启和 512 个最大音频 token，短句约 2 到 4 秒返回，显存约 4.8GB。模型默认在第一次 `/tts` 请求时加载；启动脚本会设置 `$env:QWEN3_TTS_LOAD_ON_START = '1'` 预加载模型。模型下载、显存占用和 CUDA/PyTorch 版本由电脑端环境负责，Wisp Android 端不需要安装这些依赖。
+RTX 2070 实测使用 0.6B 模型、CUDA、`float32`、采样开启和 512 个最大音频 token，短句约 2 到 4 秒返回，显存约 4.8GB。模型默认在第一次 `/tts` 请求时加载；启动脚本会设置 `$env:QWEN3_TTS_LOAD_ON_START = '1'` 预加载模型。模型下载、显存占用和 CUDA/PyTorch 版本由电脑端环境负责，Wisp Android 端不需要安装这些依赖。
 
-本项目还提供了 `D:\deepseek-reasonix-SandBox\qwen3-tts-start.ps1`，它会固定使用 `H:\qwen3-tts-models` 中的模型和 CUDA 配置。启动成功后，Wisp 代理配置为 `$env:WISP_QWEN3_TTS_URL = 'http://127.0.0.1:8000'`，手机端则填写 Wisp 根地址 `http://<computer-ip>:17890`。
+本项目还提供了 `qwen3-tts-start.ps1`，它会固定使用 `qwen3-tts-models` 中的模型和 CUDA 配置。启动成功后，Wisp 代理配置为 `$env:WISP_QWEN3_TTS_URL = 'http://127.0.0.1:8000'`，手机端则填写 Wisp 根地址 `http://<computer-ip>:17890`。
 
 `send_message`、内置设备工具和表情调用均为模拟执行。表情调用仍会解析真实的 Wisp 资源，并生成准确的 `【sticker:pack:tag】` 标记。基于 HTTP 的 `.wsptool` 条目会执行其配置的请求，除非设置了 `WISP_DEBUG_NO_NETWORK=1`。Shell、脚本和 Kotlin 实现会被 Node 调试器报告为不支持。
 
@@ -289,7 +289,7 @@ Dashboard → Server:  { type: "tts.test", engine, text, voice }
 桌面端位于 `desktop` 目录。它会自动启动 Wisp 开发服务、打开交互式回复工作台，并提供消息回复、贴纸、工具、语音收件箱和 TTS 试听功能。
 
 ```powershell
-cd WeChatClone\desktop
+cd Wisp\desktop
 npm.cmd start
 ```
 
@@ -299,7 +299,7 @@ npm.cmd start
 npm.cmd run start:compat
 ```
 
-切换到核显 780M 后，可以尝试完整沙箱模式：
+切换后，可以尝试完整沙箱模式：
 
 ```powershell
 npm.cmd run start:secure
