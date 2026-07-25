@@ -4,7 +4,7 @@ Wisp Desktop 是 Wisp 的 Windows 桌面伴侣，用于调试手机端的人工�
 
 ## 开发启动
 
-在 `WeChatClone/desktop` 目录安装依赖：
+在 `Wisp/desktop` 目录安装依赖：
 
 ```powershell
 npm install
@@ -13,13 +13,13 @@ npm.cmd start
 
 桌面端会自动启动 `scripts/wisp-dev-server.mjs`，开启交互式回复模式，创建本机随机 Dashboard Token，并在退出时关闭子服务。
 
-如果外接显卡导致 Electron 启动崩溃，可以使用 GPU 兼容模式：
+如果显卡导致 Electron 启动崩溃，可以使用 GPU 兼容模式：
 
 ```powershell
 npm.cmd run start:compat
 ```
 
-切换到核显 780M 后，可以尝试完整沙箱模式：
+切换后，可以尝试完整沙箱模式：
 
 ```powershell
 npm.cmd run start:secure
@@ -33,4 +33,4 @@ npm.cmd run start:secure
 npm run dist
 ```
 
-产物为 portable 版本，后续可以再增加安装包、自动更新和开机启动。
+产物为 portable 版本，后续再增加安装包、自动更新和开机启动。
